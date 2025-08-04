@@ -22,6 +22,22 @@ const Hero: React.FC = () => {
     }
   };
 
+  const handleStartStudying = () => {
+    // التمرير إلى قسم العد التنازلي
+    const countdownElement = document.getElementById('countdown');
+    if (countdownElement) {
+      countdownElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleExploreContent = () => {
+    // التمرير إلى قسم الميزات
+    const featuresElement = document.getElementById('features');
+    if (featuresElement) {
+      featuresElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white">
       {/* خلفية متحركة */}
@@ -59,7 +75,7 @@ const Hero: React.FC = () => {
           {/* أزرار الإجراءات */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12 px-4">
             <button 
-              onClick={() => scrollToSection('countdown')}
+              onClick={handleStartStudying}
               className="group bg-gradient-to-r from-yellow-400 to-orange-500 text-indigo-900 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-base sm:text-lg hover:from-yellow-300 hover:to-orange-400 transform hover:scale-105 transition-all duration-300 shadow-2xl hover:shadow-yellow-500/25"
             >
               <span className="flex items-center justify-center space-x-reverse space-x-2">
@@ -68,7 +84,7 @@ const Hero: React.FC = () => {
               </span>
             </button>
             <button 
-              onClick={() => scrollToSection('features')}
+              onClick={handleExploreContent}
               className="group border-2 border-white/50 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-bold text-base sm:text-lg hover:bg-white hover:text-indigo-900 transition-all duration-300 backdrop-blur-sm hover:backdrop-blur-md"
             >
               <span className="flex items-center justify-center space-x-reverse space-x-2">
@@ -79,7 +95,7 @@ const Hero: React.FC = () => {
           </div>
 
           {/* الميزات الرئيسية */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16 px-4">
+          <div id="features" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16 px-4">
             {features.map(({ icon: Icon, title, description }, index) => (
               <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 border border-white/20 hover:border-white/40 hover:transform hover:scale-105">
                 <Icon className="h-10 w-10 mx-auto mb-3 text-yellow-300" />
@@ -89,16 +105,6 @@ const Hero: React.FC = () => {
             ))}
           </div>
 
-          {/* الإحصائيات */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 px-4">
-            {stats.map(({ icon: Icon, label, value, color }, index) => (
-              <div key={index} className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-4 sm:p-6 hover:bg-white/20 transition-all duration-300 group hover:transform hover:scale-105">
-                <Icon className={`h-8 w-8 mx-auto mb-3 ${color} group-hover:scale-110 transition-transform`} />
-                <div className="text-xl sm:text-2xl lg:text-3xl font-bold mb-1 group-hover:scale-105 transition-transform">{value}</div>
-                <div className="text-indigo-100 text-xs sm:text-sm">{label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
 

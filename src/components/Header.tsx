@@ -70,7 +70,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
 
         {/* Mobile Navigation */}
         <nav className={`md:hidden transition-all duration-300 overflow-hidden ${mobileMenuOpen ? 'max-h-96 pb-4' : 'max-h-0'}`}>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="space-y-2">
             {menuItems.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
@@ -78,14 +78,14 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                   setActiveSection(id);
                   setMobileMenuOpen(false);
                 }}
-                className={`flex items-center justify-center space-x-reverse space-x-2 px-3 py-2 rounded-lg transition-all duration-200 ${
+                className={`w-full flex items-center space-x-reverse space-x-3 px-4 py-3 rounded-xl transition-all duration-200 ${
                   activeSection === id
                     ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
                     : 'text-gray-600 hover:text-indigo-600 hover:bg-indigo-50'
                 }`}
               >
                 <Icon className="h-4 w-4" />
-                <span className="text-xs font-medium">{label}</span>
+                <span className="text-sm font-medium">{label}</span>
               </button>
             ))}
           </div>

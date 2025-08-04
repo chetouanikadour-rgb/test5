@@ -10,8 +10,8 @@ const Countdown: React.FC = () => {
   });
 
   useEffect(() => {
-    // تاريخ الباكالوريا المتوقع (يونيو 2025)
-    const targetDate = new Date('2025-06-15T08:00:00');
+    // تاريخ الباكالوريا المتوقع (يونيو 2026)
+    const targetDate = new Date('2026-06-15T08:00:00');
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
@@ -38,7 +38,7 @@ const Countdown: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50">
+    <section id="countdown" className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
@@ -67,7 +67,7 @@ const Countdown: React.FC = () => {
               <Calendar className="h-6 w-6 text-indigo-600" />
             </div>
             <h3 className="text-lg sm:text-xl font-semibold text-gray-800 mb-2">تاريخ الامتحان المتوقع</h3>
-            <p className="text-gray-600 text-sm sm:text-base">15 يونيو 2025 - الساعة 8:00 صباحاً</p>
+            <p className="text-gray-600 text-sm sm:text-base">15 يونيو 2026 - الساعة 8:00 صباحاً</p>
             <p className="text-xs sm:text-sm text-gray-500 mt-2">* التاريخ قابل للتغيير حسب إعلانات وزارة التربية</p>
           </div>
         </div>
