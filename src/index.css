@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* تحسينات الأداء والخفة */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* تحسين الخطوط للأجهزة الضعيفة */
+body {
+  font-display: swap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* تقليل الحركات للأجهزة الضعيفة */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* تحسين الأداء للصور */
+img {
+  content-visibility: auto;
+  contain-intrinsic-size: 300px 200px;
+}
+
+/* تحسين التمرير */
+* {
+  scroll-behavior: smooth;
+}
+
+/* تحسين الذاكرة */
+.container {
+  contain: layout style paint;
+}

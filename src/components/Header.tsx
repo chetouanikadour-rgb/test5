@@ -7,7 +7,6 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const menuItems = [
     { id: 'home', label: 'الرئيسية', icon: Home },
@@ -20,20 +19,20 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
   ];
 
   return (
-    <header className="bg-white shadow-lg sticky top-0 z-50">
+    <header className="bg-white shadow-md sticky top-0 z-50 border-b border-gray-100">
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14 md:h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-reverse space-x-3">
+          <div className="flex items-center space-x-reverse space-x-2 md:space-x-3">
             <div className="relative">
-              <GraduationCap className="h-10 w-10 text-indigo-600" />
-              <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <GraduationCap className="h-7 w-7 md:h-10 md:w-10 text-indigo-600" />
+              <div className="absolute -top-0.5 -right-0.5 md:-top-1 md:-right-1 w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse"></div>
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-lg md:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                 SmartBACdz
               </h1>
-              <p className="text-xs text-gray-500">منصة الباكالوريا التعليمية</p>
+              <p className="text-xs text-gray-500 hidden md:block">منصة الباكالوريا التعليمية</p>
             </div>
           </div>
 
@@ -54,68 +53,25 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
               </button>
             ))}
           </nav>
-
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
-          >
-            <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-              <div className={`h-0.5 bg-gray-600 rounded transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`}></div>
-              <div className={`h-0.5 bg-gray-600 rounded transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></div>
-              <div className={`h-0.5 bg-gray-600 rounded transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></div>
-            </div>
-          </button>
         </div>
 
-        {/* Mobile Navigation */}
-        <nav className={`md:hidden transition-all duration-500 ease-in-out overflow-hidden ${mobileMenuOpen ? 'max-h-screen pb-6 pt-4' : 'max-h-0'}`}>
-          <div className="space-y-3 px-2">
+        {/* Mobile Navigation - Always Visible */}
+        <nav className="md:hidden border-t border-gray-100 bg-white">
+          <div className="flex overflow-x-auto scrollbar-hide py-2 px-1 space-x-reverse space-x-1">
             {menuItems.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
-                onClick={() => {
-                  setActiveSection(id);
-                  setMobileMenuOpen(false);
-                }}
-                className={`group w-full flex items-center justify-between px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] ${
+                onClick={() => setActiveSection(id)}
+                className={`flex-shrink-0 flex flex-col items-center justify-center px-2 py-2 rounded-lg transition-all duration-200 min-w-[60px] ${
                   activeSection === id
-                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-xl shadow-indigo-200'
-                    : 'text-gray-700 hover:text-indigo-600 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 bg-white shadow-md hover:shadow-lg border border-gray-100'
+                    ? 'bg-indigo-600 text-white shadow-md'
+                    : 'text-gray-600 hover:text-indigo-600 hover:bg-indigo-50'
                 }`}
               >
-                <div className="flex items-center space-x-reverse space-x-3">
-                  <div className={`p-2 rounded-xl transition-all duration-300 ${
-                    activeSection === id 
-                      ? 'bg-white/20' 
-                      : 'bg-indigo-100 group-hover:bg-indigo-200'
-                  }`}>
-                    <Icon className={`h-5 w-5 transition-all duration-300 ${
-                      activeSection === id 
-                        ? 'text-white' 
-                        : 'text-indigo-600 group-hover:scale-110'
-                    }`} />
-                  </div>
-                  <span className="text-base font-semibold">{label}</span>
-                </div>
-                <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  activeSection === id 
-                    ? 'bg-white' 
-                    : 'bg-transparent group-hover:bg-indigo-400'
-                }`}></div>
+                <Icon className="h-4 w-4 mb-1" />
+                <span className="text-xs font-medium leading-tight text-center">{label}</span>
               </button>
             ))}
-          </div>
-          
-          {/* Mobile Menu Footer */}
-          <div className="mt-6 px-2">
-            <div className="bg-gradient-to-r from-gray-50 to-indigo-50 rounded-2xl p-4 text-center border border-gray-100">
-              <div className="flex items-center justify-center space-x-reverse space-x-2 mb-2">
-                <GraduationCap className="h-5 w-5 text-indigo-600" />
-                <span className="text-sm font-bold text-gray-800">SmartBACdz</span>
-              </div>
-              <p className="text-xs text-gray-600">منصة الباكالوريا التعليمية</p>
-            </div>
           </div>
         </nav>
       </div>

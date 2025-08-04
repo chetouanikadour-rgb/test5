@@ -23,19 +23,13 @@ const Hero: React.FC = () => {
   };
 
   const handleStartStudying = () => {
-    // التمرير إلى قسم العد التنازلي
-    const countdownElement = document.getElementById('countdown');
-    if (countdownElement) {
-      countdownElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    // الانتقال إلى صفحة جدول المراجعة
+    window.dispatchEvent(new CustomEvent('navigate-to-schedule'));
   };
 
   const handleExploreContent = () => {
-    // التمرير إلى قسم الميزات
-    const featuresElement = document.getElementById('features');
-    if (featuresElement) {
-      featuresElement.scrollIntoView({ behavior: 'smooth' });
-    }
+    // إظهار قائمة الصفحات للتنقل
+    window.dispatchEvent(new CustomEvent('show-navigation-menu'));
   };
 
   return (
