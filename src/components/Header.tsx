@@ -28,12 +28,6 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
               <GraduationCap className="h-7 w-7 md:h-10 md:w-10 text-indigo-600" />
               <div className="absolute -top-0.5 -right-0.5 md:-top-1 md:-right-1 w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full animate-pulse"></div>
             </div>
-            <div>
-              <h1 className="text-lg md:text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                SmartBACdz
-              </h1>
-              <p className="text-xs text-gray-500 hidden md:block">منصة الباكالوريا التعليمية</p>
-            </div>
           </div>
 
           {/* Navigation */}
