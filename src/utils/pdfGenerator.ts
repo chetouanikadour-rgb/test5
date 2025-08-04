@@ -1,4 +1,6 @@
 import html2pdf from 'html2pdf.js';
+import { format } from 'date-fns';
+import { ar } from 'date-fns/locale';
 
 export const generateSchedulePDF = (scheduleItems: any[], selectedDate: Date) => {
   const completedCount = scheduleItems.filter(item => item.completed).length;
