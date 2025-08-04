@@ -69,8 +69,8 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
         </div>
 
         {/* Mobile Navigation */}
-        <nav className={`md:hidden transition-all duration-300 overflow-hidden ${mobileMenuOpen ? 'max-h-96 pb-4' : 'max-h-0'}`}>
-          <div className="space-y-2">
+        <nav className={`md:hidden transition-all duration-500 ease-in-out overflow-hidden ${mobileMenuOpen ? 'max-h-screen pb-6 pt-4' : 'max-h-0'}`}>
+          <div className="space-y-3 px-2">
             {menuItems.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
@@ -78,16 +78,44 @@ const Header: React.FC<HeaderProps> = ({ activeSection, setActiveSection }) => {
                   setActiveSection(id);
                   setMobileMenuOpen(false);
                 }}
-                className={`w-full flex items-center space-x-reverse space-x-3 px-4 py-3 rounded-xl transition-all duration-200 ${
+                className={`group w-full flex items-center justify-between px-5 py-4 rounded-2xl transition-all duration-300 transform hover:scale-[1.02] ${
                   activeSection === id
-                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-lg'
-                    : 'text-gray-600 hover:text-indigo-600 hover:bg-indigo-50'
+                    ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-xl shadow-indigo-200'
+                    : 'text-gray-700 hover:text-indigo-600 hover:bg-gradient-to-r hover:from-indigo-50 hover:to-purple-50 bg-white shadow-md hover:shadow-lg border border-gray-100'
                 }`}
               >
-                <Icon className="h-4 w-4" />
-                <span className="text-sm font-medium">{label}</span>
+                <div className="flex items-center space-x-reverse space-x-3">
+                  <div className={`p-2 rounded-xl transition-all duration-300 ${
+                    activeSection === id 
+                      ? 'bg-white/20' 
+                      : 'bg-indigo-100 group-hover:bg-indigo-200'
+                  }`}>
+                    <Icon className={`h-5 w-5 transition-all duration-300 ${
+                      activeSection === id 
+                        ? 'text-white' 
+                        : 'text-indigo-600 group-hover:scale-110'
+                    }`} />
+                  </div>
+                  <span className="text-base font-semibold">{label}</span>
+                </div>
+                <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  activeSection === id 
+                    ? 'bg-white' 
+                    : 'bg-transparent group-hover:bg-indigo-400'
+                }`}></div>
               </button>
             ))}
+          </div>
+          
+          {/* Mobile Menu Footer */}
+          <div className="mt-6 px-2">
+            <div className="bg-gradient-to-r from-gray-50 to-indigo-50 rounded-2xl p-4 text-center border border-gray-100">
+              <div className="flex items-center justify-center space-x-reverse space-x-2 mb-2">
+                <GraduationCap className="h-5 w-5 text-indigo-600" />
+                <span className="text-sm font-bold text-gray-800">SmartBACdz</span>
+              </div>
+              <p className="text-xs text-gray-600">منصة الباكالوريا التعليمية</p>
+            </div>
           </div>
         </nav>
       </div>
