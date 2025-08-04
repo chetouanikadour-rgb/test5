@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { GraduationCap, Calendar, FileText, BookOpen, Youtube, Lightbulb, Home, Files } from 'lucide-react';
 
 interface HeaderProps {
